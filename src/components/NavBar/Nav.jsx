@@ -24,8 +24,8 @@ export default function Nav() {
       </div>
       <div>
         <ul className="flex flex-col lg:flex-row justify-center">
-            <li className="p-3"><NavLink>Login</NavLink></li>
-            <li className="p-3"><NavLink>Register</NavLink></li>
+            <li className="p-3"><NavLink to={"login"}>Login</NavLink></li>
+            <li className="p-3"><NavLink to={"register"}>Register</NavLink></li>
 
         </ul>
       </div>
