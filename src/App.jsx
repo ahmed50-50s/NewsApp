@@ -2,13 +2,31 @@ import { useState } from 'react'
 
 import './App.css'
 import API from './components/API/API.JSX'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Layout from './components/Layout/Layout'
+import Home from './components/Home/Home'
+import NotFound from './components/NotFound/NotFound'
+import AboutUs from './components/AboutUs/AboutUs'
+import Category from './components/CategoryBar'
+import Slider from './components/NewsSlider/Slider'
+
+
+let routes = createBrowserRouter([
+  {path:'' , element:<Layout/> , children:[
+    {index:true, element:<Home/>},
+    {path:"News" , element:<API/>},
+    {path:"About" , element:<AboutUs/>},
+    {path:"slide" , element:<Slider/>},
+    {path:'*' , element:<NotFound/>}
+  ]}
+])
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-     <API/>
+     <RouterProvider router = {routes}>
+
+     </RouterProvider>
     </>
   )
 }
