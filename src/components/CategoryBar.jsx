@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 export default function Category({SelectedCategory , setSelectedCategory}){
     
-   const [Category, setCategory] = useState(["All","Politics" , "World" , "Science" , "tech" , "Business" , "Travel" , "Climate" , "Life cycle" , "Food" , "Sports" ])
+   const [Category, setCategory] = useState(["Politics" , "World" , "Science" , "tech" , "Business" , "Travel" , "Climate" , "Life cycle" , "Food" , "Sports" ])
    const handleClick=(categ)=>{
     setSelectedCategory(categ)
 } 

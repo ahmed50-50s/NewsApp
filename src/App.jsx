@@ -16,7 +16,6 @@ let routes = createBrowserRouter([
     {index:true, element:<Home/>},
     {path:"News" , element:<API/>},
     {path:"About" , element:<AboutUs/>},
-    {path:"slide" , element:<Slider/>},
     {path:"login" , element:<Login/>},
     {path:"register" , element:<Register/>},
     {path:'*' , element:<NotFound/>}

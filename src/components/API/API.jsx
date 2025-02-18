@@ -4,22 +4,30 @@ import { useEffect } from "react";
 import style from "./API.module.css"
 import Category from "../CategoryBar";
 import Slider from "../NewsSlider/Slider";
+import EgyptNews from "../EgyptNews/EgyptNews";
 
 export default function API() {
 
   const[dataList,setdataList] = useState([])
+  const[AllData , setAllData] = useState([])
   const [SelectedCategory , setSelectedCategory] = useState('all')
   
 
 
-  async function APIData(category){
+  async function APIData(category , setData){
     const response = await axios.get(`https://newsapi.org/v2/everything?q=${category}&language=ar&apikey=285a84cdd9fa4d2983a87737fadb1886`)
     console.log(response.data.articles)
-    setdataList(response.data.articles)
+    setData(response.data.articles)
     
   }
+
   useEffect(()=>{
-    APIData(SelectedCategory)
+    APIData('all' ,setAllData )
+    console.log(AllData)
+  })
+
+  useEffect(()=>{
+    APIData(SelectedCategory ,setdataList )
     console.log(dataList)
   },[SelectedCategory])
   
@@ -35,7 +43,11 @@ export default function API() {
     </div>
     <div className="bg-black">
       <Category SelectedCategory={SelectedCategory} setSelectedCategory={setSelectedCategory}/>
-      <Slider newsData={dataList} />
+      <div  className="flex">
+        <Slider newsData={AllData} />
+        <EgyptNews/>
+      </div>
+
     </div>
     <div className="flex flex-wrap gap-4 justify-center p-2 ">
       {

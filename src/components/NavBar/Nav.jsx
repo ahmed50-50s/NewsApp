@@ -4,7 +4,7 @@ import img from "../../../images/logo3.webp";
 export default function Nav() {
   return (
     <>
-    <div className="flex justify-between lg:item-center flex-col lg:flex-row text-green-600 bg-black">
+    <div className="flex justify-between lg:item-center flex-col lg:flex-row text-green-600 bg-black fixed w-full">
     <div className="flex flex-col lg:flex-row justify-center ">
         <img src={img} alt="logo" width={40} style={{ margin: "10px" }} />
         <ul className="flex flex-col lg:flex-row">
