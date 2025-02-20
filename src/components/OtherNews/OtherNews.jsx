@@ -2,7 +2,7 @@ export default function OtherNews() {
   return (
     <>
       <div
-        className="flex flex-wrap bg-blue-900 m-5 mr-12 w-1/3 h-[300px] relative left-0"
+        className="flex flex-wrap bg-blue-900 m-5 mr-12 w-1/3 h-[300px] relative left-0 "
         style={{ borderRadius: "20px", backgroundColor: "#303030" }}
       >
         <div>

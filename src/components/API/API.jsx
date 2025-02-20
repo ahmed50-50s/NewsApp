@@ -59,39 +59,54 @@ export default function API() {
           <OtherNews />
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 justify-center p-2" style={{backgroundColor:"#f3f2ea"}}>
-        {/* <SideNews newsData={EgyptData}/> */}
-        {dataList.length > 0 ? (
-          dataList.map((data) => (
-            <div className="w-1/3 lg:w-1/3 md:w-full sm:w-full mb-12">
-              <div
-                key={data.url}
-                className="shadow-xl rounded-2xl relative "
-                style={{
-                  backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${data.urlToImage})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: "40vh",
-                  width:"60vh",
-                  margin: "10px",
-                }}
-              >
-                <h2 className={`text-green-400 m-2 absolute bottom-0 w-full`}>
-                  {data.title}
-                </h2>
-              </div>
-              <div className="bg-white shadow-xl rounded-2xl relative" style={{width:"92%"}}>
-                <p className="p-8">{data.description?.split("").slice(0,120).join("")}...</p>
-                <button className="w-103 bg-green-900 hover:bg-green-700 text-white font-semibold py-2 rounded-lg shadow-md transition duration-300 m-5">
-                  Show Details
-                </button>
-              </div>
-            </div>
-          ))
-        ) : (
-          <span className="loader"></span>
-        )}
-      </div>
+      <div className="flex flex-wrap md:flex-nowrap" style={{ backgroundColor: "#f3f2ea" }}>
+  
+  <div className="flex flex-wrap gap-4 justify-center p-2 w-full md:w-3/4">
+    {dataList.length > 0 ? (
+      dataList.map((data) => (
+        <div
+          className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 mb-12"
+          key={data.url}
+        >
+          <div
+            className="shadow-xl rounded-2xl relative"
+            style={{
+              backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${data.urlToImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: "30vh",
+              marginBottom: "20px",
+            }}
+          >
+            <h2 className="text-green-400 m-2 absolute bottom-0 w-90">
+              {data.title}
+            </h2>
+          </div>
+          <div
+            className="bg-white shadow-xl rounded-2xl relative p-4"
+          >
+            <p className="mb-4">
+              {data.description?.split("").slice(0, 120).join("")}...
+            </p>
+            <button className="w-full bg-green-900 hover:bg-green-700 text-white font-semibold py-2 rounded-lg shadow-md transition duration-300">
+              Show Details
+            </button>
+          </div>
+        </div>
+      ))
+    ) : (
+      <span className="loader"></span>
+    )}
+  </div>
+
+  <div className="hidden md:block">
+    <SideNews newsData={EgyptData} />
+  </div>
+  
+</div>
+
+
+      
     </>
   );
 }
