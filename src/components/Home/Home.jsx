@@ -1,13 +1,23 @@
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gray-100 p-6">
-      <h1 className="text-5xl font-bold text-gray-800 mb-4">Home</h1>
-      <p className="text-lg text-gray-600 text-center max-w-2xl">
-        مرحبًا بك في مشروع الأخبار! نحن نقدم لك أحدث الأخبار من مصادر موثوقة في مختلف المجالات لتبقى دائمًا على اطلاع.
-      </p>
-      <p className="text-lg text-gray-600 text-center max-w-2xl mt-2">
-        تابع آخر التحديثات اليومية في مكان واحد بسهولة وسرعة.
-      </p>
+    <div className="min-h-screen bg-gray-900 flex flex-col justify-center items-center p-6">
+      <div className="bg-gray-800 shadow-lg rounded-lg p-8 max-w-3xl w-full text-right">
+        <h1 className="text-3xl sm:text-4xl font-bold text-green-500 mb-6 flex justify-center">
+          الصفحة الرئيسية
+        </h1>
+
+        <p className="text-green-500 mb-6 flex justify-center">
+          مرحبًا بك في **News App**، المصدر الأول للأخبار الموثوقة والمحدثة لحظة بلحظة.
+        </p>
+
+        <p className="text-gray-400 mb-4 flex justify-center">
+          نحن نقدم لك أحدث الأخبار من مصادر موثوقة في مختلف المجالات لتكون دائمًا على اطلاع.
+        </p>
+
+        <p className="text-gray-400 flex justify-center">
+          تابع آخر التحديثات اليومية حول السياسة، الرياضة، التكنولوجيا، وغيرها، في مكان واحد بسهولة وسرعة.
+        </p>
+      </div>
     </div>
   );
 }

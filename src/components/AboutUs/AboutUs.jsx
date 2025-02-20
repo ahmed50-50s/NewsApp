@@ -1,57 +1,55 @@
-import React from "react";
-
 export default function AboutUs() {
   return (
-    <div className="container mx-auto p-6" style={{width:"100%"}}>
-      <h1 className="text-4xl font-bold text-center mb-6">About Us</h1>
-      
-      <section className="mb-6">
-        <h2 className="text-2xl font-semibold">Who We Are</h2>
-        <p className="mt-2 text-gray-700">
-          Welcome to <strong>Your News Website Name</strong>, your trusted source for accurate and timely news.
-          We are committed to delivering insightful analysis and in-depth reports on politics, business, technology, 
-          entertainment, sports, and more.
+    <div className="min-h-screen bg-gray-900 flex flex-col justify-center items-center p-6">
+      <div className="bg-gray-800 shadow-lg rounded-lg p-8 max-w-3xl w-full text-right">
+        <h1 className="text-3xl sm:text-4xl font-bold text-green-500 mb-6 flex justify-center">
+          من نحن
+        </h1>
+
+        <p className="text-green-500 mb-6">
+          مرحبًا بكم في <strong>News App</strong>، مصدر الأخبار الأول لك، حيث نقدم لك أخبارًا دقيقة وشاملة حول العالم.
         </p>
-      </section>
-      
-      <section className="mb-6">
-        <h2 className="text-2xl font-semibold">Our Mission</h2>
-        <p className="mt-2 text-gray-700">
-          Our mission is to inform, educate, and empower our readers with reliable news coverage. We strive to provide 
-          unbiased and fact-checked information to keep you updated on global and local events.
-        </p>
-      </section>
-      
-      <section className="mb-6">
-        <h2 className="text-2xl font-semibold">Our Values</h2>
-        <ul className="mt-2 list-disc list-inside text-gray-700">
-          <li><strong>Integrity:</strong> Adhering to the highest ethical standards in journalism.</li>
-          <li><strong>Accuracy:</strong> Ensuring well-researched and fact-checked news.</li>
-          <li><strong>Independence:</strong> Remaining unbiased and transparent in our reporting.</li>
-          <li><strong>Diversity:</strong> Covering stories from multiple perspectives.</li>
-          <li><strong>Engagement:</strong> Encouraging reader participation and discussions.</li>
-        </ul>
-      </section>
-      
-      <section className="mb-6">
-        <h2 className="text-2xl font-semibold">Why Choose Us?</h2>
-        <ul className="mt-2 list-disc list-inside text-gray-700">
-          <li>24/7 coverage of breaking news</li>
-          <li>Expert opinions and exclusive interviews</li>
-          <li>Trusted sources and investigative journalism</li>
-          <li>User-friendly and engaging reading experience</li>
-        </ul>
-      </section>
-      
-      <section>
-        <h2 className="text-2xl font-semibold">Get In Touch</h2>
-        <p className="mt-2 text-gray-700">
-          We value your feedback and welcome your input. Contact us at:
-        </p>
-        <p className="mt-2 text-gray-900 font-semibold">📧 Email: ak728233@gmail.com</p>
-        <p className="text-gray-900 font-semibold">🌐 Website: www.newsApp.com</p>
-        <p className="text-gray-900 font-semibold">📱 Follow us on Social Media</p>
-      </section>
+
+        {/* مهمتنا */}
+        <section className="mb-6">
+          <h2 className="text-2xl font-semibold text-green-500">مهمتنا</h2>
+          <p className="mt-2 text-gray-400">
+            نحن ملتزمون بتقديم أخبار موثوقة وتحليلات معمقة حول السياسة، الأعمال، التكنولوجيا، الرياضة، وغيرها.
+          </p>
+        </section>
+
+        {/* قيمنا */}
+        <section className="mb-6">
+          <h2 className="text-2xl font-semibold text-green-500">قيمنا</h2>
+          <ul className="mt-2 list-disc list-inside text-gray-400">
+            <li><strong>المصداقية:</strong> الالتزام بالمعايير الأخلاقية العالية في الصحافة.</li>
+            <li><strong>الدقة:</strong> تقديم أخبار موثوقة بعد التحقق منها.</li>
+            <li><strong>الشفافية:</strong> عدم التحيز وتقديم الأخبار بحيادية.</li>
+            <li><strong>التنوع:</strong> تغطية الأحداث من زوايا متعددة.</li>
+            <li><strong>التفاعل:</strong> تشجيع القراء على المشاركة والتفاعل.</li>
+          </ul>
+        </section>
+
+        {/* لماذا تختارنا */}
+        <section className="mb-6">
+          <h2 className="text-2xl font-semibold text-green-500">لماذا تختارنا؟</h2>
+          <ul className="mt-2 list-disc list-inside text-gray-400">
+            <li>تغطية على مدار الساعة لأهم الأخبار العاجلة.</li>
+            <li>تحليلات خبراء ومقابلات حصرية.</li>
+            <li>مصادر موثوقة وتحقيقات استقصائية.</li>
+            <li>تجربة قراءة سهلة وممتعة.</li>
+          </ul>
+        </section>
+
+        {/* تواصل معنا */}
+        <section>
+          <h2 className="text-2xl font-semibold text-green-500">تواصل معنا</h2>
+          <p className="mt-2 text-gray-400">نرحب بآرائكم واقتراحاتكم، لا تترددوا في التواصل معنا:</p>
+          <p className="mt-2 text-gray-300 font-semibold">📧 البريد الإلكتروني: ak728233@gmail.com</p>
+          <p className="text-gray-300 font-semibold">🌐 الموقع الإلكتروني: www.newsApp.com</p>
+          <p className="text-gray-300 font-semibold">📱 تابعونا على وسائل التواصل الاجتماعي</p>
+        </section>
+      </div>
     </div>
   );
 }
