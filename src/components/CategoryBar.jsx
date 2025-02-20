@@ -7,9 +7,7 @@ export default function Category({SelectedCategory , setSelectedCategory}){
    const handleClick=(categ)=>{
     setSelectedCategory(categ)
 } 
-    useEffect(()=>{
-    console.log(SelectedCategory)
-    },[SelectedCategory])
+
    return(
     <>
         <div className="flex justify-center">
@@ -18,7 +16,7 @@ export default function Category({SelectedCategory , setSelectedCategory}){
                 {
                     Category.map((cat, index)=>{
                        return <li  className={`cursor-pointer rounded-lg hover:bg-green-900 transition-all p-3 mx-2
-                        ${SelectedCategory === cat ? "bg-green-600 text-white" : ""}`} onClick={() => handleClick(cat)} key={index}>
+                        ${SelectedCategory === cat ? "bg-green-700 text-white" : ""}`} onClick={() => handleClick(cat)} key={index}>
                             {cat}
                         </li>
                     })

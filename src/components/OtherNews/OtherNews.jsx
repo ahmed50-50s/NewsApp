@@ -1,15 +1,14 @@
-export default function EgyptNews(props) {
-  console.log(props);
+export default function OtherNews() {
   return (
     <>
       <div
-        className="flex flex-wrap bg-blue-900 m-5 mr-12 w-2/5 h-auto "
+        className="flex flex-wrap bg-blue-900 m-5 mr-12 w-1/3 h-[300px] relative left-0"
         style={{ borderRadius: "20px", backgroundColor: "#303030" }}
       >
         <div>
             
         </div>
-        <div className="flex m-3 items-center">
+        <div className="flex m-3 items-center h-[140px]">
           <img
             src="https://www.tech-wd.com/wd/wp-content/uploads/2025/02/Egypt-Ventures-giza-systems.jpg"
             width={"50%"}
@@ -21,7 +20,7 @@ export default function EgyptNews(props) {
             شراكة استراتيجية بين Giza Systems و Egypt Ventures لدعم الشركات
             الناشئة
           </p>
-          <button className="bg-green-900 hover:bg-blue-700 text-white font-semibold py-1 px-2 m-3 rounded-lg shadow-md transition duration-300">
+          <button className="bg-green-900 hover:bg-green-700 text-white font-semibold py-1 px-2 m-3 rounded-lg shadow-md transition duration-300">
           Show Details
           </button>
           </div>
@@ -29,7 +28,7 @@ export default function EgyptNews(props) {
 
           
         </div>
-        <div className="flex m-3 items-center">
+        <div className="flex m-3 items-center h-[140px]">
           <img
             src="https://www.aljazeera.net/wp-content/uploads/2022/01/RTX7GR8D.jpg?resize=1920%2C1440"
             width={"50%"}
@@ -41,7 +40,7 @@ export default function EgyptNews(props) {
             شراكة استراتيجية بين Giza Systems و Egypt Ventures لدعم الشركات
             الناشئة
           </p>
-          <button className="bg-green-900 hover:bg-blue-700 text-white font-semibold py-1 px-2 m-3 rounded-lg shadow-md transition duration-300">
+          <button className="bg-green-900 hover:bg-green-700 text-white font-semibold py-1 px-2 m-3 rounded-lg shadow-md transition duration-300">
           Show Details
           </button>
           </div>
