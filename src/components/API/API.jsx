@@ -11,6 +11,7 @@ export default function API() {
   const [AllData, setAllData] = useState([]);
   const [EgyptData , setEgyptData] = useState([])
   const [SelectedCategory, setSelectedCategory] = useState("all");
+  const [VisibleCount , setVisibleCount] = useState(6)
 
   async function APIData(category, setData) {
     const response = await axios.get(
@@ -33,6 +34,15 @@ export default function API() {
     APIData(SelectedCategory, setdataList);
   }, [SelectedCategory]);
 
+  const handleVisibleCount = ()=>{
+    if(VisibleCount == dataList.length)
+    {
+      setVisibleCount(6)
+    }
+    else(
+      setVisibleCount(dataList.length)
+    )
+  }
   return (
     <>
       <div className="bg-black text-white flex">
@@ -63,7 +73,7 @@ export default function API() {
   
   <div className="flex flex-wrap gap-4 justify-center p-2 w-full md:w-3/4">
     {dataList.length > 0 ? (
-      dataList.map((data) => (
+      dataList.slice(0,VisibleCount).map((data) => (
         <div
           className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 mb-12"
           key={data.url}
@@ -97,6 +107,15 @@ export default function API() {
     ) : (
       <span className="loader"></span>
     )}
+    {dataList.length > 6 && (
+  <button
+    onClick={handleVisibleCount}
+    className="w-1/2 bg-green-900 hover:bg-green-700 text-white font-semibold py-2 rounded-lg shadow-md transition duration-300 mt-4 "
+  >
+    {VisibleCount >= dataList.length ? "Show Less" : "Show More"}
+  </button>
+)}
+
   </div>
 
   <div className="hidden md:block">
