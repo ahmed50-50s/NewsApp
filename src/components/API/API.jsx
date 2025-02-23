@@ -16,6 +16,7 @@ export default function API() {
   const [VisibleCount, setVisibleCount] = useState(6);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedNews, setSelectedNews] = useState(null);
+  const [searchQuery , setsearchQuery] = useState()
 
   async function APIData(category, setData) {
     const response = await axios.get(
@@ -47,11 +48,25 @@ export default function API() {
     setSelectedNews(null);
   };
 
+  const filteredData = dataList.filter((item) =>
+    item.title.includes(searchQuery)
+  );
+
   return (
     <>
-      {/* ✅ Header */}
-      <div className="bg-black text-white flex justify-center p-5">
-        <h1 className="text-4xl sm:text-5xl font-bold">News Website</h1>
+      <div className="bg-black text-white flex">
+        <h1 className="text-5xl p-5">News WebSite</h1>
+        <div className="m-8 absolute right-0">
+          <input
+            type="text"
+            className="bg-green-900 border border-1 rounded-md px-12 shadow-sm shadow-white"
+            name="search"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e)=>{setsearchQuery(e.target.value)}}
+          />
+          <button className="bg-red-900 hover:bg-sky-700 p-1 rounded-md">Search</button>
+        </div>
       </div>
 
       {/* ✅ Category and Sliders */}
@@ -67,10 +82,10 @@ export default function API() {
       </div>
 
       {/* ✅ News Grid Section */}
-      <div className="flex flex-wrap md:flex-nowrap bg-gray-100">
+      <div className="flex flex-wrap md:flex-nowrap " style={{backgroundColor:"#f3f2ea"}}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 w-full md:w-3/4">
-          {dataList.length > 0 ? (
-            dataList.slice(0, VisibleCount).map((data) => (
+          {filteredData.length > 0 ? (
+            filteredData.slice(0, VisibleCount).map((data) => (
               <div
                 className="shadow-xl rounded-2xl overflow-hidden"
                 key={data.url}
@@ -106,16 +121,7 @@ export default function API() {
           )}
 
           {/* ✅ Show More Button */}
-          {dataList.length > 6 && (
-            <div className="w-full flex justify-center">
-              <button
-                onClick={handleVisibleCount}
-                className="bg-green-700 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition duration-300 mt-4"
-              >
-                {VisibleCount >= dataList.length ? "عرض أقل" : "عرض المزيد"}
-              </button>
-            </div>
-          )}
+          
         </div>
 
         {/* ✅ Side News (hidden on small screens) */}
@@ -123,6 +129,16 @@ export default function API() {
           <SideNews newsData={EgyptData} />
         </div>
       </div>
+      {dataList.length > 6 && (
+            <div className="w-full flex align-center justify-center p-5 " style={{backgroundColor:"#f3f2ea"}}>
+              <button
+                onClick={handleVisibleCount}
+                className="bg-green-700 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition duration-300 mt-4 w-1/4"
+              >
+                {VisibleCount >= dataList.length ? "عرض أقل" : "عرض المزيد"}
+              </button>
+            </div>
+          )}
 
       {/* ✅ Modal for Detailed News */}
       <Modal
