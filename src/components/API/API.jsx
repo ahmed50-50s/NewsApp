@@ -16,7 +16,7 @@ export default function API() {
   const [VisibleCount, setVisibleCount] = useState(6);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedNews, setSelectedNews] = useState(null);
-  const [searchQuery , setsearchQuery] = useState()
+  const [searchQuery, setsearchQuery] = useState("");
 
   async function APIData(category, setData) {
     const response = await axios.get(
@@ -48,9 +48,10 @@ export default function API() {
     setSelectedNews(null);
   };
 
-  const filteredData = dataList.filter((item) =>
-    item.title.includes(searchQuery)
-  );
+  // ✅ الفلترة بناءً على البحث
+  const filteredData = searchQuery.trim()
+    ? dataList.filter((item) => item.title?.toLowerCase().includes(searchQuery.toLowerCase()))
+    : dataList;
 
   return (
     <>
@@ -63,34 +64,27 @@ export default function API() {
             name="search"
             placeholder="Search"
             value={searchQuery}
-            onChange={(e)=>{setsearchQuery(e.target.value)}}
+            onChange={(e) => setsearchQuery(e.target.value)}
           />
-          <button className="bg-red-900 hover:bg-sky-700 p-1 rounded-md">Search</button>
         </div>
       </div>
 
-      {/* ✅ Category and Sliders */}
+      {/* ✅ الأقسام والسلايدر */}
       <div className="bg-black">
-        <Category
-          SelectedCategory={SelectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
+        <Category SelectedCategory={SelectedCategory} setSelectedCategory={setSelectedCategory} />
         <div className="flex lg:flex-row">
           <Slider newsData={AllData} />
           <OtherNews />
         </div>
       </div>
 
-      {/* ✅ News Grid Section */}
-      <div className="flex flex-wrap md:flex-nowrap " style={{backgroundColor:"#f3f2ea"}}>
+      {/* ✅ قسم عرض الأخبار */}
+      <div className="flex flex-wrap md:flex-nowrap" style={{ backgroundColor: "#f3f2ea" }}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 w-full md:w-3/4">
           {filteredData.length > 0 ? (
             filteredData.slice(0, VisibleCount).map((data) => (
-              <div
-                className="shadow-xl rounded-2xl overflow-hidden"
-                key={data.url}
-              >
-                {/* ✅ Image Background */}
+              <div className="shadow-xl rounded-2xl overflow-hidden" key={data.url}>
+                {/* ✅ صورة الخلفية */}
                 <div
                   className="relative h-48 sm:h-56 md:h-64 bg-cover bg-center"
                   style={{
@@ -102,7 +96,7 @@ export default function API() {
                   </h2>
                 </div>
 
-                {/* ✅ Content Section */}
+                {/* ✅ قسم التفاصيل */}
                 <div className="bg-white p-4">
                   <p className="text-gray-700 mb-4">
                     {data.description?.slice(0, 100)}...
@@ -117,30 +111,29 @@ export default function API() {
               </div>
             ))
           ) : (
-            <span className="loader"></span>
+            <span className="text-gray-500 text-center w-full">لا توجد نتائج مطابقة</span>
           )}
-
-          {/* ✅ Show More Button */}
-          
         </div>
 
-        {/* ✅ Side News (hidden on small screens) */}
+        {/* ✅ أخبار جانبية */}
         <div className="hidden md:block">
           <SideNews newsData={EgyptData} />
         </div>
       </div>
-      {dataList.length > 6 && (
-            <div className="w-full flex align-center justify-center p-5 " style={{backgroundColor:"#f3f2ea"}}>
-              <button
-                onClick={handleVisibleCount}
-                className="bg-green-700 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition duration-300 mt-4 w-1/4"
-              >
-                {VisibleCount >= dataList.length ? "عرض أقل" : "عرض المزيد"}
-              </button>
-            </div>
-          )}
 
-      {/* ✅ Modal for Detailed News */}
+      {/* ✅ زر تحميل المزيد */}
+      {filteredData.length > 6 && (
+        <div className="w-full flex align-center justify-center p-5" style={{ backgroundColor: "#f3f2ea" }}>
+          <button
+            onClick={handleVisibleCount}
+            className="bg-green-700 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition duration-300 mt-4 w-1/4"
+          >
+            {VisibleCount >= filteredData.length ? "عرض أقل" : "عرض المزيد"}
+          </button>
+        </div>
+      )}
+
+      {/* ✅ المودال لتفاصيل الأخبار */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
